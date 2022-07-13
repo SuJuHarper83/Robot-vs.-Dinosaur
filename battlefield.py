@@ -4,14 +4,12 @@
 
 from dinosaur import Dinosaur
 from robot import Robot
-from weapon import Weapon
 
 class Battlefield:
 
     def __init__(self):
-        self.dinosaur = Dinosaur("Jaws", 25)
+        self.dinosaur = Dinosaur("Jaws", 10)
         self.robot = Robot("Titan")
-        self.weapon = Weapon("Iron Fist", 25)
 
     def run_game(self):
         
@@ -24,21 +22,10 @@ class Battlefield:
 
     def battle_phase(self): # attack functions; # while loop
         while self.dinosaur.health > 0 and self.robot.health > 0:
-            print()
-            print(f"Robot {self.robot.name} takes a hit from Dinosaur {self.dinosaur.name} for {self.dinosaur.attack_power} damage!")
             self.dinosaur.attack(self.robot)
-            print(f"Robot {self.robot.name} has {self.robot.health}% health.")
-            if self.robot.health <= 0:
-                print()
-                print(f"Dinosaur {self.dinosaur.name} wins!")
-            print()
-            print(f"Dinosaur {self.dinosaur.name} takes a hit from Robot {self.robot.name}'s mighty {self.weapon.name} for {self.weapon.attack_power} damage!")
-            self.robot.attack(self.dinosaur)
-            print(f"Dinosaur {self.dinosaur.name} has {self.dinosaur.health}% health.")
-            if self.dinosaur.health <= 0:
-                print()
-                print(f"Robot {self.robot.name} wins!")
-
+            if self.robot.health > 0:
+                self.robot.attack(self.dinosaur)
+          
     def display_winner(self):
         if self.dinosaur.health > 0:
             print()

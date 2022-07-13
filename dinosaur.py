@@ -12,5 +12,8 @@ class Dinosaur():
 
     def attack(self, robot): # pulls in the robot object
         robot.health -= self.attack_power
-                
+        print()
+        print(f"Robot {robot.name} takes a hit from Dinosaur {self.name} for {self.attack_power} damage!")
+        print(f"Robot {robot.name} has {robot.health} health.")
+       
             
